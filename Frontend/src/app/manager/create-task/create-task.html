@@ -1,0 +1,52 @@
+<div class="page-container">
+  <div class="form-box">
+    <div class="form-header">
+      <h3>Create & Assign Task</h3>
+      <a routerLink="/manager/tasks" class="btn-back">← Back</a>
+    </div>
+
+    @if (errorMessage) {
+      <div class="error-msg">{{ errorMessage }}</div>
+    }
+
+    <div class="form-group">
+      <label>Task Title</label>
+      <input type="text" [(ngModel)]="title" placeholder="Enter task title" class="form-input" />
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea
+        [(ngModel)]="description"
+        placeholder="Enter task description"
+        class="form-input"
+        rows="4"
+      >
+      </textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Select Project</label>
+      <select [(ngModel)]="projectId" class="form-input">
+        <option value="0">-- Select Project --</option>
+        @for (project of projects; track project.id) {
+          <option [value]="project.id">{{ project.name }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Assign To Developer</label>
+      <select [(ngModel)]="assignedToUserId" class="form-input">
+        <option value="">-- Select Developer --</option>
+        @for (dev of developers; track dev.id) {
+          <option [value]="dev.id">{{ dev.fullName }} ({{ dev.email }})</option>
+        }
+      </select>
+    </div>
+
+    <button (click)="create()" [disabled]="loading" class="btn-create">
+      {{ loading ? 'Creating...' : 'Create Task' }}
+    </button>
+  </div>
+</div>

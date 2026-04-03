@@ -1,0 +1,89 @@
+<div class="page-container">
+  <div class="navbar">
+    <h2>Task Manager</h2>
+    <div class="nav-links">
+      <a routerLink="/manager/dashboard">Dashboard</a>
+      <a routerLink="/manager/projects">Projects</a>
+      <a routerLink="/manager/tasks">Tasks</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section-header">
+      <h3>Kanban Board</h3>
+      <a routerLink="/manager/create-task" class="btn-create"> + Assign Task </a>
+    </div>
+
+    @if (loading) {
+      <p>Loading...</p>
+    }
+
+    @if (errorMessage) {
+      <div class="error-msg">{{ errorMessage }}</div>
+    }
+
+    @if (!loading) {
+      <div class="kanban-board">
+        <!-- To Do Column -->
+        <div class="kanban-column">
+          <div class="column-header todo-header">
+            <h4>To Do</h4>
+            <span class="count">{{ kanban.toDo?.length || 0 }}</span>
+          </div>
+          <div class="column-body">
+            @if (kanban.toDo?.length === 0) {
+              <div class="empty-col">No tasks</div>
+            }
+            @for (task of kanban.toDo; track task.id) {
+              <div class="task-card">
+                <h5>{{ task.title }}</h5>
+                <p>{{ task.description }}</p>
+                <span class="assignee">👤 {{ task.assignedTo }}</span>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- In Progress Column -->
+        <div class="kanban-column">
+          <div class="column-header progress-header">
+            <h4>In Progress</h4>
+            <span class="count">{{ kanban.inProgress?.length || 0 }}</span>
+          </div>
+          <div class="column-body">
+            @if (kanban.inProgress?.length === 0) {
+              <div class="empty-col">No tasks</div>
+            }
+            @for (task of kanban.inProgress; track task.id) {
+              <div class="task-card">
+                <h5>{{ task.title }}</h5>
+                <p>{{ task.description }}</p>
+                <span class="assignee">👤 {{ task.assignedTo }}</span>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Done Column -->
+        <div class="kanban-column">
+          <div class="column-header done-header">
+            <h4>Done</h4>
+            <span class="count">{{ kanban.done?.length || 0 }}</span>
+          </div>
+          <div class="column-body">
+            @if (kanban.done?.length === 0) {
+              <div class="empty-col">No tasks</div>
+            }
+            @for (task of kanban.done; track task.id) {
+              <div class="task-card">
+                <h5>{{ task.title }}</h5>
+                <p>{{ task.description }}</p>
+                <span class="assignee">👤 {{ task.assignedTo }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

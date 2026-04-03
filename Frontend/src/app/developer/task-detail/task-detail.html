@@ -1,0 +1,82 @@
+<div class="page-container">
+  <div class="navbar">
+    <h2>Task Manager</h2>
+    <a routerLink="/developer/my-tasks" class="btn-back">← My Tasks</a>
+  </div>
+
+  <div class="content">
+    @if (loading) {
+      <div class="loading">Loading task...</div>
+    }
+
+    @if (errorMessage) {
+      <div class="error-msg">{{ errorMessage }}</div>
+    }
+
+    @if (successMessage) {
+      <div class="success-msg">{{ successMessage }}</div>
+    }
+
+    @if (task) {
+      <div class="task-detail-box">
+        <div class="task-info">
+          <div class="task-title-row">
+            <h3>{{ task.title }}</h3>
+            <span [class]="'status-badge ' + getStatusClass(task.status)">
+              {{ task.status }}
+            </span>
+          </div>
+          <p class="task-desc">{{ task.description }}</p>
+          <p class="project-info">📁 Project: {{ task.projectName }}</p>
+        </div>
+
+        <div class="update-status-box">
+          <h4>Update Status</h4>
+          <div class="status-row">
+            <select [(ngModel)]="selectedStatus" class="form-input">
+              @for (s of statusOptions; track s) {
+                <option [value]="s">{{ s }}</option>
+              }
+            </select>
+            <button (click)="updateStatus()" [disabled]="statusLoading" class="btn-update">
+              {{ statusLoading ? 'Updating...' : 'Update' }}
+            </button>
+          </div>
+        </div>
+
+        <div class="comments-box">
+          <h4>Comments ({{ comments.length }})</h4>
+
+          <div class="add-comment">
+            <textarea
+              [(ngModel)]="newComment"
+              placeholder="Write a comment..."
+              class="form-input"
+              rows="3"
+            >
+            </textarea>
+            <button (click)="addComment()" [disabled]="commentLoading" class="btn-comment">
+              {{ commentLoading ? 'Adding...' : 'Add Comment' }}
+            </button>
+          </div>
+
+          @if (comments.length === 0) {
+            <div class="empty-comments">No comments yet!</div>
+          }
+
+          @for (comment of comments; track comment.id) {
+            <div class="comment-card">
+              <div class="comment-header">
+                <span class="author">👤 {{ comment.authorName }}</span>
+                <span class="date">
+                  {{ comment.createdAt | date: 'dd MMM yyyy, hh:mm a' }}
+                </span>
+              </div>
+              <p class="comment-content">{{ comment.content }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

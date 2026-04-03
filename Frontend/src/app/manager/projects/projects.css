@@ -1,0 +1,110 @@
+.page-container {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.navbar {
+  background-color: #1890ff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h2 {
+  margin: 0;
+  color: white;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.content {
+  padding: 30px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.btn-create {
+  background-color: #1890ff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.projects-table {
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.projects-table th {
+  background-color: #1890ff;
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.projects-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+.projects-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.btn-action {
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+  margin-right: 5px;
+  text-decoration: none;
+}
+
+.btn-view {
+  background-color: #e6f7ff;
+  color: #1890ff;
+}
+
+.btn-delete {
+  background-color: #fff2f0;
+  color: #ff4d4f;
+}
+
+.empty-msg {
+  text-align: center;
+  color: #999;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+}
+
+.error-msg {
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+  color: #ff4d4f;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}

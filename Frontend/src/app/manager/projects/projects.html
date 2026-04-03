@@ -1,0 +1,60 @@
+<div class="page-container">
+  <div class="navbar">
+    <h2>Task Manager</h2>
+    <div class="nav-links">
+      <a routerLink="/manager/dashboard">Dashboard</a>
+      <a routerLink="/manager/tasks">Tasks</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section-header">
+      <h3>All Projects</h3>
+      <a routerLink="/manager/create-project" class="btn-create"> + Create Project </a>
+    </div>
+
+    @if (loading) {
+      <p>Loading...</p>
+    }
+
+    @if (errorMessage) {
+      <div class="error-msg">{{ errorMessage }}</div>
+    }
+
+    @if (!loading && projects.length === 0) {
+      <div class="empty-msg">No projects found!</div>
+    }
+
+    @if (!loading && projects.length > 0) {
+      <table class="projects-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Project Name</th>
+            <th>Description</th>
+            <th>Total Tasks</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (project of projects; track project.id; let i = $index) {
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ project.name }}</td>
+              <td>{{ project.description }}</td>
+              <td>{{ project.tasks?.length || 0 }}</td>
+              <td>
+                <a [routerLink]="['/manager/kanban', project.id]" class="btn-action btn-view">
+                  Kanban
+                </a>
+                <button (click)="deleteProject(project.id)" class="btn-action btn-delete">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="page-container">
+  <div class="navbar">
+    <h2>Task Manager</h2>
+    <div class="nav-links">
+      <a routerLink="/manager/dashboard">Dashboard</a>
+      <a routerLink="/manager/projects">Projects</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section-header">
+      <h3>All Tasks</h3>
+      <a routerLink="/manager/create-task" class="btn-create"> + Assign Task </a>
+    </div>
+
+    @if (loading) {
+      <p>Loading...</p>
+    }
+
+    @if (errorMessage) {
+      <div class="error-msg">{{ errorMessage }}</div>
+    }
+
+    @if (!loading && tasks.length === 0) {
+      <div class="empty-msg">No tasks found. Create your first task!</div>
+    }
+
+    @if (!loading && tasks.length > 0) {
+      <table class="tasks-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Assigned To</th>
+            <th>Project</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (task of tasks; track task.id; let i = $index) {
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ task.title }}</td>
+              <td>{{ task.description }}</td>
+              <td>
+                <span [class]="'status-badge ' + getStatusClass(task.status)">
+                  {{ task.status }}
+                </span>
+              </td>
+              <td>{{ task.assignedToUser?.fullName || 'Unassigned' }}</td>
+              <td>{{ task.project?.name || '-' }}</td>
+              <td>
+                <button (click)="deleteTask(task.id)" class="btn-action btn-delete">Delete</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+</div>

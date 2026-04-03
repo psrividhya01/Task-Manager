@@ -1,0 +1,151 @@
+.page-container {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.navbar {
+  background-color: #722ed1;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h2 {
+  margin: 0;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-links span {
+  color: white;
+  font-size: 14px;
+}
+
+.btn-logout {
+  background-color: white;
+  color: #722ed1;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.content {
+  padding: 30px;
+}
+
+.content h3 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.loading {
+  text-align: center;
+  color: #666;
+  padding: 40px;
+}
+
+.empty-msg {
+  text-align: center;
+  color: #999;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+}
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.task-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.task-header h4 {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+  flex: 1;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.status-todo {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.status-progress {
+  background-color: #e6f7ff;
+  color: #1890ff;
+}
+
+.status-done {
+  background-color: #f6ffed;
+  color: #52c41a;
+}
+
+.task-desc {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-name {
+  color: #999;
+  font-size: 13px;
+}
+
+.btn-view {
+  background-color: #f9f0ff;
+  color: #722ed1;
+  padding: 6px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.btn-view:hover {
+  background-color: #efdbff;
+}
+
+.error-msg {
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+  color: #ff4d4f;
+  padding: 10px;
+  border-radius: 5px;
+}

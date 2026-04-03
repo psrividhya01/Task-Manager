@@ -1,0 +1,47 @@
+<div class="page-container">
+  <div class="navbar">
+    <h2>Task Manager</h2>
+    <div class="nav-links">
+      <span>Developer Panel</span>
+      <button (click)="logout()" class="btn-logout">Logout</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <h3>My Tasks</h3>
+
+    @if (loading) {
+      <div class="loading">Loading tasks...</div>
+    }
+
+    @if (errorMessage) {
+      <div class="error-msg">{{ errorMessage }}</div>
+    }
+
+    @if (!loading && tasks.length === 0) {
+      <div class="empty-msg">No tasks assigned to you yet!</div>
+    }
+
+    @if (!loading && tasks.length > 0) {
+      <div class="tasks-grid">
+        @for (task of tasks; track task.id) {
+          <div class="task-card">
+            <div class="task-header">
+              <h4>{{ task.title }}</h4>
+              <span [class]="'status-badge ' + getStatusClass(task.status)">
+                {{ task.status }}
+              </span>
+            </div>
+            <p class="task-desc">{{ task.description }}</p>
+            <div class="task-footer">
+              <span class="project-name">📁 {{ task.projectName }}</span>
+              <a [routerLink]="['/developer/task-detail', task.id]" class="btn-view">
+                View Details
+              </a>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>
