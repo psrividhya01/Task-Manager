@@ -131,9 +131,10 @@ using (var scope = app.Services.CreateScope())
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+   
 }
+ app.UseSwagger();
+    app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAngular");
