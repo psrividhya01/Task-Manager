@@ -17,12 +17,12 @@ export class AuthService {
 
   // Login
   login(model: LoginModel) {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, model);
+    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, model);
   }
 
   // Register
   register(model: RegisterModel) {
-    return this.http.post(`${this.apiUrl}/register`, model, { responseType: 'text' });
+    return this.http.post(`${this.apiUrl}/auth/register`, model, { responseType: 'text' });
   }
 
   // Save token

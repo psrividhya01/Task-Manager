@@ -94,7 +94,8 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("http://localhost:4200",
             "https://black-island-0da621a00.7.azurestaticapps.net")
               .AllowAnyHeader()
-              .AllowAnyMethod();
+        .AllowAnyMethod()
+        .AllowCredentials(); 
     });
 });
 
